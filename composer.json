@@ -11,6 +11,7 @@
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "linecorp/line-bot-sdk": "^7.2",
         "square/square": "14.1.0.20210915"
     },
     "require-dev": {

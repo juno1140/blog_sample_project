@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\LineMessageController;
 use App\Http\Controllers\SquareController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,8 @@ Route::get('get_events', [CalendarController::class, 'getEvents']);
 // Square
 Route::get('square', [SquareController::class, 'index']);
 Route::post('square/createPayment', [SquareController::class, 'createPayment'])->name('square.createPayment');
+
+// LINE messaging API
+Route::get('line_message', [LineMessageController::class, 'index']);
+Route::post('line_message/webhook', [LineMessageController::class, 'webhook'])->name('line_message.webhook');
+Route::post('line_message/send_message', [LineMessageController::class, 'sendMessage'])->name('line_message.send_message');
