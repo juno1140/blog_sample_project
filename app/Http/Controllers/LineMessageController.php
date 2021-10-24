@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\LineMessagingApiService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class LineMessageController extends Controller
 {
+    private $lineMessagingApiService;
+
+    public function __construct(LineMessagingApiService $lineMessagingApiService)
+    {
+        $this->lineMessagingApiService = $lineMessagingApiService;
+    }
+
     public function index()
     {
         Log::info('test');
@@ -15,7 +23,9 @@ class LineMessageController extends Controller
 
     public function webhook(Request $request)
     {
-        Log::info($request->all());
+//        Log::info($request->all());
+        $replyToken = $request->events[0]['replyToken'];
+        $this->lineMessagingApiService->SendReplyMessage($replyToken, 'サンプルメッセージ');
         return true;
     }
 
