@@ -9,6 +9,7 @@ class LineMessageController extends Controller
 {
     public function index()
     {
+        Log::info('test');
         return view('line_message');
     }
 
